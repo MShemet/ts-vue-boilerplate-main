@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 
 import type User from "@/types/User";
+import type Entry from "@/types/Entry";
 
 import TheHeader from "@/components/TheHeader.vue";
 import EntryEditor from "@/components/EntryEditor.vue";
@@ -12,12 +13,16 @@ const user: User = reactive({
   username: "test_user",
   settings: [],
 });
+
+const handleCreateEntry = (entry: Entry) => {
+  console.log(entry);
+};
 </script>
 
 <template>
   <main class="container m-auto p-10">
     <TheHeader />
-    <EntryEditor />
+    <EntryEditor @create="handleCreateEntry" />
     <ul>
       <li>
         <EntryCard />
